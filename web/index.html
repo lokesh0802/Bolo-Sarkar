@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>बोलो सरकार — Bolo Sarkar</title>
+<style>
+  :root{
+    --saffron:#FF9933;
+    --saffron-dark:#E8791A;
+    --green:#138808;
+    --green-dark:#0e6606;
+    --whatsapp:#25D366;
+    --whatsapp-dark:#1DA851;
+    --navy:#0B1F3A;
+    --ink:#1a2233;
+    --muted:#5a6478;
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --ring:rgba(11,31,58,0.08);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI","Noto Sans Devanagari","Noto Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #fff4e6 0%, var(--bg) 55%),
+      var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .wrap{
+    width:100%;
+    max-width:560px;
+  }
+  .tricolor{
+    height:6px;
+    width:100%;
+    border-radius:6px;
+    background:linear-gradient(90deg, var(--saffron) 0 33%, #ffffff 33% 66%, var(--green) 66% 100%);
+    margin-bottom:22px;
+    box-shadow:0 1px 0 var(--ring);
+  }
+  .card{
+    background:var(--card);
+    border-radius:24px;
+    padding:36px 30px 32px;
+    box-shadow:0 10px 40px rgba(11,31,58,0.10), 0 2px 8px rgba(11,31,58,0.06);
+    text-align:center;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--green-dark);
+    background:#eaf7e8;
+    border:1px solid #d3ecd0;
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:18px;
+    letter-spacing:.2px;
+  }
+  .badge::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:#2fbf2f;
+    box-shadow:0 0 0 3px rgba(47,191,47,0.18);
+  }
+  h1{
+    font-size:34px;
+    line-height:1.2;
+    margin:0 0 4px;
+    color:var(--navy);
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  h1 .en{
+    display:block;
+    font-size:15px;
+    font-weight:600;
+    color:var(--muted);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-top:6px;
+  }
+  p.lede{
+    color:var(--muted);
+    font-size:15.5px;
+    line-height:1.6;
+    margin:16px auto 28px;
+    max-width:420px;
+  }
+  .lede strong{color:var(--ink);}
+  .cta{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  a.btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    padding:16px 20px;
+    border-radius:16px;
+    font-size:16.5px;
+    font-weight:700;
+    color:#fff;
+    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    box-shadow:0 6px 16px var(--shadow, rgba(0,0,0,0.12));
+  }
+  a.btn:active{transform:scale(0.98);}
+  a.btn:hover{filter:brightness(1.04);}
+  .btn-whatsapp{
+    background:linear-gradient(180deg, var(--whatsapp), var(--whatsapp-dark));
+    --shadow: rgba(37,211,102,0.35);
+  }
+  .btn-call{
+    background:linear-gradient(180deg, var(--saffron), var(--saffron-dark));
+    --shadow: rgba(232,121,26,0.32);
+  }
+  .btn .icon{
+    flex:0 0 auto;
+    width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,0.22);
+    border-radius:12px;
+  }
+  .btn .icon svg{width:20px;height:20px;}
+  .btn .text{
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    flex:1;
+  }
+  .btn .text small{
+    font-weight:600;
+    font-size:12px;
+    opacity:0.92;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+  }
+  .btn .text .num{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;
+  }
+  .btn .arrow{
+    opacity:0.85;
+    flex:0 0 auto;
+  }
+  .footnote{
+    margin-top:24px;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .footnote .dot{color:#c6cbd6;}
+  .features{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+    margin-top:28px;
+  }
+  .feature{
+    background:#f8f9fc;
+    border:1px solid #eef0f6;
+    border-radius:14px;
+    padding:12px 8px;
+    font-size:12px;
+    color:var(--muted);
+    font-weight:600;
+    line-height:1.4;
+  }
+  .feature .emoji{font-size:20px;display:block;margin-bottom:6px;}
+  .page-footer{
+    text-align:center;
+    margin-top:20px;
+    font-size:12.5px;
+    color:#98a0b3;
+  }
+  @media (max-width:420px){
+    h1{font-size:28px;}
+    .card{padding:28px 20px 26px;}
+    .features{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tricolor"></div>
+    <div class="card">
+      <span class="badge">अभी उपलब्ध · Live now</span>
+      <h1>बोलो सरकार<span class="en">Bolo Sarkar · Speak to the Government</span></h1>
+      <p class="lede">
+        सरकारी योजनाओं की जानकारी अब सिर्फ एक कॉल या मैसेज दूर है।
+        <strong>No app. No data plan needed.</strong> Talk to us directly —
+        in Hindi, English, or both.
+      </p>
+
+      <div class="cta">
+        <a class="btn btn-whatsapp" href="https://wa.me/917082366618?text=Namaste%2C%20mujhe%20sarkari%20yojana%20ke%20baare%20mein%20jaankari%20chahiye" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.4 1.74 6.29L3 29l7.85-2.66a11.99 11.99 0 0 0 5.19 1.19h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.39 22.72 3 16.04 3zm0 21.94h-.01a10.2 10.2 0 0 1-5.2-1.42l-.37-.22-3.87 1.31 1.29-3.77-.24-.39a9.99 9.99 0 0 1-1.53-5.39c0-5.56 4.53-10.09 10.1-10.09 2.7 0 5.24 1.05 7.14 2.96a9.98 9.98 0 0 1 2.96 7.13c0 5.57-4.53 10.09-10.27 10.09zm5.53-7.56c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.65-.94-2.26-.25-.6-.5-.5-.68-.51-.18-.01-.38-.01-.58-.01-.2 0-.53.08-.8.38-.28.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.07-.13-.27-.2-.57-.35z"/></svg>
+          </span>
+          <span class="text">
+            <small>WhatsApp पर बात करें</small>
+            <span class="num">+91 70823 66618</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+
+        <a class="btn btn-call" href="tel:+918071581370">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.56 1 1 0 0 1-.25 1.02l-2.2 2.21z"/></svg>
+          </span>
+          <span class="text">
+            <small>कॉल करें · Call now</small>
+            <span class="num">+91 80715 81370</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="footnote">
+        <span>🕐 सुबह 8 से रात 10 बजे तक</span>
+        <span class="dot">•</span>
+        <span>Hindi · English</span>
+      </div>
+
+      <div class="features">
+        <div class="feature"><span class="emoji">🎙️</span>किसी भी फोन से कॉल</div>
+        <div class="feature"><span class="emoji">📋</span>4,000+ सरकारी योजनाएं</div>
+        <div class="feature"><span class="emoji">✅</span>पात्रता जांच तुरंत</div>
+      </div>
+    </div>
+    <p class="page-footer">बोलो सरकार — बिना ऐप, बिना डेटा प्लान के, हर नागरिक तक</p>
+  </div>
+</body>
+</html>
