@@ -8,7 +8,7 @@ structured application case created with SMS confirmation. Built for the
 Services).
 
 
-## Whatsapp-Code->https://github.com/lokesh0802/Gov-scheme.git
+
 No app to install, no data plan required, no literacy required — it works
 on any phone that can receive a call.
 
